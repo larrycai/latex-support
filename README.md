@@ -14,6 +14,6 @@ While so far it doesn't work for miktex portable version, I guess there are late
 
 Since it is written in Chinese, it will be nice to use ctex/xeCJK as template
 
-**Issue 2** update main.tex to use ctex/xeCJK as new template
+**Issue 2** update `main.tex` to use ctex/xeCJK as new template
 
 Thanks
