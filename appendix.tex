@@ -1,0 +1,174 @@
+\chapter{培训示例模板}
+\label{培训示例模板}
+
+如果在公司培训，这是一个模板，建议根据实际情况修改。
+
+\section{时间安排}
+\label{时间安排}
+
+所有的培训都在二楼的哥德堡培训室，请带好自己的电脑，准时到达。
+
+\begin{verbatim}
+第一天  09:00-09:05 培训介绍
+        09:05-10:35 企业组织结构介绍、敏捷、Scrum
+        10:35-11:30 布置练习，在白板前实战学习。
+        13:00-16:00 Git入门，代码审阅与Gerrit。
+第二天  09:00-09:15 站立会议，练习任务点评。
+        09:20-11:20 持续集成（java，maven，jenkins）
+        13:00-16:00 Java质量，Game of life介绍
+第三天  09:00-11:20 实例化需求
+        13:00-16:00 Cucumber
+第四天  09:00-10:00 Game of life项目任务和计划会议
+        10:00-15:00 团队任务
+        15:00-16:00 任务审阅和回顾
+        16:00-16:30 结束，颁发毕业证书，拍照留念 
+\end{verbatim}
+
+\section{培训的材料}
+\label{培训的材料}
+
+培训的机器是Windows平台
+
+\begin{itemize}
+\item 所有的培训Slides：\href{http://server/download/ppt}{http:/\slash server\slash download\slash ppt}
+
+\item 所有的需要安装的软件在：\href{http://server/download/software}{http:/\slash server\slash download\slash software} (第一天用U盘拷贝到培训员工各自桌面）
+
+\end{itemize}
+
+这本手册只是一个参考，你需要花更多的时间去了解熟悉它们，4天的学习会很有意思，要有激情，否者什么都学不到。
+
+\section{培训负责人准备工作}
+\label{培训负责人准备工作}
+
+\begin{itemize}
+\item 培训房间，网络，老师安排，会议通知，手册打印。
+
+\item Gerrit服务器和Jenkins服务器和tomcat服务器
+
+\item \href{https://github.com/wakaleo/game-of-life}{生命游戏（game of life）}\footnote{\href{https://github.com/wakaleo/game-of-life}{https:/\slash github.com\slash wakaleo\slash game-of-life}}Git仓库复原
+
+\end{itemize}
+
+\section{反馈}
+\label{反馈}
+
+作为企业中的一员，学会给别人反馈是第一要务，给这些课提些建议吧。谢谢。
+
+\chapter{企业版本控制的改革：走向Git}
+\label{企业版本控制的改革：走向git}
+
+在传统企业中，版本控制系统大都采用ClearCase或SVN。特别是ClearCase在早期提供了强大的企业应用的功能，我们部门也很早使用了。而且长久以来，在它周围建立了无数的应用和流程，同事们都觉得它是必须的了。
+
+然而随着敏捷和开放的推动下，在有些产品用ClearCase开发碰到了很多局限，比如在家上班，远程团队开发。有人开始想到是否可以引入其他工具来解决，不过在大型企业中要改变这种基础的工具是很难的。
+
+我就想介绍一下我们是如何一步步地走向Git的。
+
+特别声明：本文原为图灵社区活动“\href{http://www.ituring.com.cn/activity/details/696}{唤醒你心中的布道师}\footnote{\href{http://www.ituring.com.cn/activity/details/696}{http:/\slash www.ituring.com.cn\slash activity\slash details\slash 696}}”而写的文章：\href{http://www.ituring.com.cn/article/details/721}{企业版本控制的改革：从ClearCase到Git--我的布道之旅}\footnote{\href{http://www.ituring.com.cn/article/details/721}{http:/\slash www.ituring.com.cn\slash article\slash details\slash 721}}，这里有所编辑。
+
+这里想说的主要是如何在需要的时候推动技术的变革，而不是探讨技术的好坏。每个技术都有适应的场所，请勿生搬硬套。
+
+关于版本控制的选择，也可以看看Martin Fowler写的\href{http://martinfowler.com/bliki/VersionControlTools.html}{版本控制工具(english)}\footnote{\href{http://martinfowler.com/bliki/VersionControlTools.html}{http:/\slash martinfowler.com\slash bliki\slash VersionControlTools.html}}
+
+\section{了解最新技术-分布式版本控制（DVCS）}
+\label{了解最新技术-分布式版本控制（dvcs）}
+
+在推动技术改变的时候，首先要了解最新的技术状况，别学了一个旧了过时了的。
+
+我们使用的主要是ClearCase，开始考虑这个转换的时候是在2009年初，SVN是第一个考虑的对象，因为它在开源中用的最多，\href{http://sourceforge.net}{sourceforge}\footnote{\href{http://sourceforge.net}{http:/\slash sourceforge.net}}和Eclipse的很多项目多用它，但我总觉得缺了点什么。
+
+恰好我有个同事提到SVN和ClearCase都是集中式的，推荐我看看一个分布式版本控制工具：Mercurial，说实话听了介绍不是很懂，没有眼前一亮的感觉。聊了一下，感觉和SVN的分支没有多大区别，何况DVCS还需要两层提交呢。
+
+同时我也了解到还有其它的分布式版本控制工具Git，Bazaar可供选择。
+
+不管怎么样，我了解到这块领域有了最新的技术，它或许能解决我们的问题（要不时地问问自己为什么）。
+
+\section{尝试在日常中使用分布式版本控制}
+\label{尝试在日常中使用分布式版本控制}
+
+为了尽快了解DVCS，我决定要在日常的开发中用用它，实践它，尽快地掌握它的关键。
+
+由于同事对Mercurial很熟，我就踏踏实实地用Mercurial尝试了两个星期，不懂就问他，顺便查查资料去比较一番。
+
+DVCS真是很神奇，很好用，特别对我的胃口，感觉DVCS天生是为软件开发用的。
+
+在同一时刻，我又比较深入的看了看其他的系统如Git，发现Git的生态圈更好一点。在软件开发中，生态圈会决定将来这个工具的发展趋势。
+
+\begin{itemize}
+\item 如Eclipse插件开发邮件中开始讨论并决定用Git替代svn。
+
+\item Git有很多的书可供选择（如 \href{http://progit.org/}{ProGit}\footnote{\href{http://progit.org/}{http:/\slash progit.org\slash }}），\href{http://git-scm.com/}{git在线网站}\footnote{\href{http://git-scm.com/}{http:/\slash git-scm.com\slash }}的内容也极其丰富。
+
+\item \href{https://github.com/}{github}\footnote{\href{https://github.com/}{https:/\slash github.com\slash }}也漂亮得提供git的支持。补充一下，那时候\href{http://bitbucket.org/}{bitbucket}\footnote{\href{http://bitbucket.org/}{http:/\slash bitbucket.org\slash }}和github还在同一个水平线上。\href{http://code.google.com/}{google code}\footnote{\href{http://code.google.com/}{http:/\slash code.google.com\slash }}也还不支持git，只有Mercurial和svn。
+
+\end{itemize}
+
+通过这些实践和了解，发现DVCS-Git很适合我们所在的部门的企业产品软件开发。
+
+\section{宣扬和推广分布式版本控制}
+\label{宣扬和推广分布式版本控制}
+
+要在企业中换一个版本控制工具难度非常大，所以必须要布道，我采用了下面的方法：
+
+\begin{enumerate}
+\item 每月我们都有固定学习新东西的时间，我就推荐了Mercurial、Git两个课程，让大家共同来学习，了解它。顺便我要看看开发者对它的接受程度，有趣的是，水平越牛的人越是喜欢它，纷纷过来问什么时候能在产品开发中用上Git。
+
+\item 除了开发者，管理者和其他的使用者（配置管理的同事）的想法也很重要。我经常抓住机会和这些人聊DVCS ，聊Git，给他们介绍，看看他们有什么想法。当然他们有时候会不同意我的观点（有强势的，有委婉的），我就试图去说服他们，并从中挖掘出推动这个变化的关键因素。
+
+\end{enumerate}
+
+慢慢得我就得到了很多如何推动这个变化的关键说服点，这个每次情况都不会一样。
+
+\section{详细研究版本迁移}
+\label{详细研究版本迁移}
+
+开发者想使用分布式版本控制的呼声越来越高，管理者也开始认真考虑了。
+
+在企业中，改变所需要的研究评测报告是必不可少的了，这也给了我一次重新认识集中式和分布式版本控制的过程，我花了更多的时间去想这个改变对企业带来的好处。实际上开发者有时候不会考虑到整个软件开发的所有方面，如安全，持续集成等等。报告的大致框架是：
+
+\begin{itemize}
+\item 现在问题是什么？
+
+\item 什么是DVCS，Git是什么？
+
+\item 能改变什么？带来的好处？
+
+\item 如果变化，计划是什么？
+
+\end{itemize}
+
+这一期间，使我静下心来更详细地了解了Git对企业可能的影响（有好的，有坏的），并制定了相应的对策。
+
+\section{开始在小范围实施}
+\label{开始在小范围实施}
+
+技术改变需要耐心和机遇，机缘巧合，迁移到Git的建议比较顺利地被管理层接受了。
+
+然后就是要去认认真真地实施了，这不是一个小问题，既然是软件开发，来不得半点的马虎，细节决定一切。而且实施得好坏还涉及到产品开发的正常运转。
+
+企业中一般会选择从小范围开始实施，成功了才推广，下面是我们的一些实践。
+
+\begin{itemize}
+\item 我们开始用\href{https://github.com/sitaramc/gitolite}{gitolite}\footnote{\href{https://github.com/sitaramc/gitolite}{https:/\slash github.com\slash sitaramc\slash gitolite}}作为Git服务器，架好试验平台，在一个小项目中开始尝试。
+
+\item 人手一本Git的书，安排Git入门培训，提高驾驭Git的能力。
+
+\item 不断收集资料，提高对Git的认识。
+
+\end{itemize}
+
+还好基本上没有出大的差错，虽然有蛮多技术难点的，不过最后都解决了。通过小范围的使用推广，我们的技术储备也加强了（特别是配置管理的人），对下一步的全面实施更有信心。
+
+\section{推广、并引入Gerrit做代码审查}
+\label{推广、并引入gerrit做代码审查}
+
+早期我们用的是gitolite来架Git服务器，它很不错。不过后来发现\href{http://code.google.com/p/gerrit/}{Gerrit}\footnote{\href{http://code.google.com/p/gerrit/}{http:/\slash code.google.com\slash p\slash gerrit\slash }}更好用，后来就切换过去使用了。这一点很重要，要不断探索这些新技术，争取在大规模推广前，用一个最适合的工具，否则一用上，在企业中就很难改变了。
+
+Git开始在更多团队和更多产品中使用后，我们不断加强知识的培训，而且把相关的系统（如持续集成）都迁移到Git上去。一切都还不错，只是Git比想象中还复杂一点。
+
+因为Gerrit有很强大的代码审查（code review）功能，不久以后这个功能也用上去了，代码提交的质量一下子上了一个档次，这是开始推动Git变革时没有想到的。
+
+\section{小结}
+\label{小结}
+
+技术的变化不是那么容易得，需要天时、地利、人和，缺一不可。如果你有什么好建议，欢迎一起探讨。
